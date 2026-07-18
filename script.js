@@ -10,8 +10,8 @@
   const gridEl = document.getElementById('sudoku-grid');
   const btnSolve = document.getElementById('btn-solve');
   const btnReset = document.getElementById('btn-reset');
-  const numpad = document.getElementById('numpad');
   const toastContainer = document.getElementById('toast-container');
+
   const statFilled = document.getElementById('stat-filled');
   const statEmpty = document.getElementById('stat-empty');
   const statTime = document.getElementById('stat-time');
@@ -118,47 +118,6 @@
       cells[targetIdx].focus();
     }
   }
-
-  // ===== Numpad (Mobile) =====
-  numpad.addEventListener('click', (e) => {
-    const key = e.target.closest('.numpad__key');
-    if (!key) return;
-
-    const num = key.dataset.num;
-
-    if (activeCell === null) {
-      // If no cell focused, focus first empty cell
-      const firstEmpty = findNextEmpty(-1);
-      if (firstEmpty !== null) {
-        cells[firstEmpty].focus();
-        activeCell = firstEmpty;
-      } else {
-        return;
-      }
-    }
-
-    const input = cells[activeCell];
-    if (input.classList.contains('given') || input.readOnly) return;
-
-    if (num === '0') {
-      input.value = '';
-    } else {
-      input.value = num;
-    }
-
-    applyNumColor(input);
-    clearErrors();
-    validateBoard();
-    updateStats();
-
-    // Auto-advance after placing a number
-    if (num !== '0') {
-      const next = findNextEmpty(activeCell);
-      if (next !== null) {
-        cells[next].focus();
-      }
-    }
-  });
 
   // ===== Highlight Related Cells =====
   function highlightRelated(idx) {

@@ -239,13 +239,11 @@ body::after {
 }
 
 .sudoku-cell input.given {
-  color: var(--text-given);
   background: var(--bg-cell-given);
   font-weight: 700;
 }
 
 .sudoku-cell input.solved {
-  color: var(--text-solved);
   background: var(--bg-cell-solved);
   animation: cell-reveal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
 }
@@ -276,29 +274,19 @@ body::after {
   80% { transform: translateX(2px); }
 }
 
-/* ===== Per-Digit Colors ===== */
-.sudoku-cell input.num-1 { color: #60a5fa; }  /* Sky Blue */
-.sudoku-cell input.num-2 { color: #f472b6; }  /* Pink */
-.sudoku-cell input.num-3 { color: #34d399; }  /* Emerald */
-.sudoku-cell input.num-4 { color: #fbbf24; }  /* Amber */
-.sudoku-cell input.num-5 { color: #a78bfa; }  /* Violet */
-.sudoku-cell input.num-6 { color: #fb923c; }  /* Orange */
-.sudoku-cell input.num-7 { color: #2dd4bf; }  /* Teal */
-.sudoku-cell input.num-8 { color: #f87171; }  /* Red */
-.sudoku-cell input.num-9 { color: #e879f9; }  /* Fuchsia */
+/* ===== Per-Digit Colors (Background) ===== */
+.board-card .sudoku-cell input.num-1 { background: rgba(96, 165, 250, 0.18) !important; color: #93bbfd !important; }   /* Sky Blue */
+.board-card .sudoku-cell input.num-2 { background: rgba(244, 114, 182, 0.18) !important; color: #f9a8d4 !important; }  /* Pink */
+.board-card .sudoku-cell input.num-3 { background: rgba(52, 211, 153, 0.18) !important; color: #6ee7b7 !important; }   /* Emerald */
+.board-card .sudoku-cell input.num-4 { background: rgba(251, 191, 36, 0.18) !important; color: #fcd34d !important; }   /* Amber */
+.board-card .sudoku-cell input.num-5 { background: rgba(167, 139, 250, 0.18) !important; color: #c4b5fd !important; }  /* Violet */
+.board-card .sudoku-cell input.num-6 { background: rgba(251, 146, 60, 0.18) !important; color: #fdba74 !important; }   /* Orange */
+.board-card .sudoku-cell input.num-7 { background: rgba(45, 212, 191, 0.18) !important; color: #5eead4 !important; }   /* Teal */
+.board-card .sudoku-cell input.num-8 { background: rgba(248, 113, 113, 0.18) !important; color: #fca5a5 !important; }  /* Red */
+.board-card .sudoku-cell input.num-9 { background: rgba(232, 121, 249, 0.18) !important; color: #f0abfc !important; }  /* Fuchsia */
 
 /* Error state overrides digit color */
-.sudoku-cell input.error.num-1,
-.sudoku-cell input.error.num-2,
-.sudoku-cell input.error.num-3,
-.sudoku-cell input.error.num-4,
-.sudoku-cell input.error.num-5,
-.sudoku-cell input.error.num-6,
-.sudoku-cell input.error.num-7,
-.sudoku-cell input.error.num-8,
-.sudoku-cell input.error.num-9 {
-  color: var(--text-error);
-}
+.board-card .sudoku-cell input.error { background: var(--bg-cell-error) !important; color: var(--text-error) !important; }
 
 /* ===== Controls ===== */
 .controls {
@@ -405,51 +393,7 @@ body::after {
 }
 
 /* ===== Number Pad ===== */
-.numpad {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-  width: 100%;
-}
 
-.numpad__key {
-  aspect-ratio: 1.4 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-cell);
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-family: var(--font-family);
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.numpad__key:hover {
-  background: var(--bg-cell-focus);
-  border-color: var(--border-focus);
-  transform: translateY(-1px);
-}
-
-.numpad__key:active {
-  transform: scale(0.93);
-  background: rgba(99, 102, 241, 0.25);
-}
-
-.numpad__key--erase {
-  color: var(--text-error);
-  font-size: 1.3rem;
-}
-
-.numpad__key--erase:hover {
-  background: var(--bg-cell-error);
-  border-color: var(--border-error);
-}
 
 /* ===== Status / Toast Messages ===== */
 .toast-container {
